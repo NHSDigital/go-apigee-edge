@@ -182,7 +182,7 @@ func NewEdgeClient(o *EdgeClientOptions) (*EdgeClient, error) {
 	}
 	pesterClient.MaxRetries = 5
 	pesterClient.Backoff = pester.LinearBackoff //n seconds where n is the retry number
-	pesterClient.isRetryable = func(statusCode int) bool { return statuscode >= 500 || statusCode == 401 || statusCode == 403 }
+	pesterClient.IsRetryable = func(statusCode int) bool { return statusCode >= 500 || statusCode == 401 || statusCode == 403 }
 	mgmtUrl := o.MgmtUrl
 	if o.MgmtUrl == "" {
 		mgmtUrl = defaultBaseURL
